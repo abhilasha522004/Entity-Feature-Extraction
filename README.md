@@ -11,43 +11,34 @@ Both techniques work together to improve entity extraction accuracy. 🚀
 ---
 
 ## ⚙️ Setup and Installation
-Follow these steps to set up the project:
-
 1. 📥 **Clone the repository:**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/abhilasha522004/Entity-Feature-Extraction.git
+   cd Entity-Feature-Extraction
    ```
-2. 📦 **Install dependencies:**
+2. 📦 **Install dependencies** (Python 3.9+ and the [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) engine are required):
    ```bash
-   pip install -r requirements.txt
-   ```
-3. 📊 **Download and preprocess the dataset:**
-   ```bash
-   python data_preparation.py
+   pip install torch torchvision scikit-learn pandas numpy opencv-python pytesseract pillow matplotlib seaborn tqdm
    ```
 
 ---
 
-## 🚀 Usage
+## 🚀 Pipeline
+Run the scripts in this order:
 
-Perform the following steps to use the model:
+| Step | Script | What it does |
+|---|---|---|
+| 1 | `data-preparation.py` | Downloads product images and builds the train/validation split |
+| 2 | `label-preprocessing.py` | Normalizes entity values and units |
+| 3 | `image-preprocessing.py` | Resizes and cleans images for OCR and the CNN |
+| 4 | `ocr-feature-extraction.py` | Extracts text from images with Tesseract |
+| 5 | `cnn-feature-extraction.py` | Extracts visual features with a pretrained CNN |
+| 6 | `model-development.py` | Trains the hybrid OCR + CNN model |
+| 7 | `performance-optimization.py` | Tunes the model |
+| 8 | `error-analysis.py` | Confusion matrix and classification report |
+| 9 | `prediction-output-generation.py` | Generates predictions for the test set |
 
-- 🛠️ **Prepare the data:**
-   ```bash
-   python data_preparation.py
-   ```
-- 📈 **Extract features:**
-   ```bash
-   python feature_extraction.py
-   ```
-- 🎯 **Train the model:**
-   ```bash
-   python model_training.py
-   ```
-- 📊 **Generate predictions:**
-   ```bash
-   python predict.py
-   ```
+A full write-up of the approach is in `Image_Based_Entity_Extraction_Project.docx`.
 
 ---
 
